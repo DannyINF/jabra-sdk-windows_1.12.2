@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['sc_5flegacy_5fmode_0',['SC_LEGACY_MODE',['../_interface___bluetooth_8h.html#aa5a7e21d154bf6866b900a8c8cbccd9ba6891f4af1dd808cc82bacf81ca98f1bd',1,'Interface_Bluetooth.h']]],
+  ['sc_5frestricted_5fmode_1',['SC_RESTRICTED_MODE',['../_interface___bluetooth_8h.html#aa5a7e21d154bf6866b900a8c8cbccd9ba17fe436177cfb1a9856103a9e822e31e',1,'Interface_Bluetooth.h']]],
+  ['sc_5fsecure_5fmode_2',['SC_SECURE_MODE',['../_interface___bluetooth_8h.html#aa5a7e21d154bf6866b900a8c8cbccd9ba44f97ffccf07e2d21b0f3907194c3e43',1,'Interface_Bluetooth.h']]],
+  ['sdk_5ftoooldforfwupdate_3',['Sdk_TooOldForFwUpdate',['../namespace_jabra_s_d_k.html#a780638a9286e0778034517eb84113f70af72fe4136adb533927917fa2ca5ad7c9',1,'JabraSDK']]],
+  ['sdk_5ftoooldforupdate_4',['Sdk_TooOldForUpdate',['../namespace_jabra_s_d_k.html#afc0a5e414d091cca34137253aa4d69e6adca7b1f3dcc5e4c5cdc442ac1d6d13de',1,'JabraSDK']]],
+  ['sdktoooldforfwupdateerror_5',['SdkTooOldForFwUpdateError',['../namespace_jabra_s_d_k.html#ac9b963f48d9dfd79806c4ab780032ba6a2b9bf14cac0e47c695a84a60c123d209',1,'JabraSDK']]],
+  ['sealingtest_6',['SealingTest',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4aaafe5f10b55c88b550a0e45a7f61d0b0',1,'JabraSDK']]],
+  ['searchcomplete_7',['SearchComplete',['../namespace_jabra_s_d_k.html#a93b1d552c1d48adbd28607898d3a1542a7be7aed1206489a570c1a5c230514f4b',1,'JabraSDK']]],
+  ['searchresult_8',['SearchResult',['../namespace_jabra_s_d_k.html#a93b1d552c1d48adbd28607898d3a1542a662eeb7ea48c87b9809b6399a5c88940',1,'JabraSDK']]],
+  ['secureconnectionlegacy_9',['SecureConnectionLegacy',['../namespace_jabra_s_d_k.html#a9d72ae3c27d788fa7e954728767d8503a9a5e377d7106948c395f40b8b20d50f0',1,'JabraSDK']]],
+  ['secureconnectionrestricted_10',['SecureConnectionRestricted',['../namespace_jabra_s_d_k.html#a9d72ae3c27d788fa7e954728767d8503a8ca5e2f738e62299da5b6926f19fc319',1,'JabraSDK']]],
+  ['secureconnectionsecure_11',['SecureConnectionSecure',['../namespace_jabra_s_d_k.html#a9d72ae3c27d788fa7e954728767d8503afbc0bdec832e75cfbffc3109a92ca44a',1,'JabraSDK']]],
+  ['setdatetime_12',['SetDateTime',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4a81ba0b19be6efeb9510af729b61ae9a1',1,'JabraSDK']]],
+  ['setsettingsfail_13',['SetSettingsFail',['../namespace_jabra_s_d_k.html#ac9b963f48d9dfd79806c4ab780032ba6abb998b7a40b22769edeeaccabc686258',1,'JabraSDK']]],
+  ['settingschangenotification_14',['SettingsChangeNotification',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4ad2029c470ecf69e43c46a4282797a6d5',1,'JabraSDK']]],
+  ['speeddial_15',['SpeedDial',['../namespace_jabra_s_d_k.html#a03606eb4e93727a021c31d2fe2117534a77d6125210735f9de2556f56d625018f',1,'JabraSDK']]],
+  ['speeddialnumber_16',['SpeedDialNumber',['../namespace_jabra_s_d_k.html#ab31c6acec35a3dc2a5fffd5cd9f8d14dae7044d7127c65703c4b21fde1005464c',1,'JabraSDK']]],
+  ['sslerror_17',['SslError',['../namespace_jabra_s_d_k.html#ac9b963f48d9dfd79806c4ab780032ba6a6372ccdbbe44b57b8198c8528956cd25',1,'JabraSDK.SslError()'],['../namespace_jabra_s_d_k.html#afc0a5e414d091cca34137253aa4d69e6a6372ccdbbe44b57b8198c8528956cd25',1,'JabraSDK.SslError()']]],
+  ['std_5fhid_18',['STD_HID',['../_jabra_native_hid_8h.html#aef2c77411cf7c84268c45e03f44b897cae36009c2b51661f38133c3a167df2b09',1,'STD_HID():&#160;JabraNativeHid.h'],['../namespace_jabra_s_d_k.html#a7539ba0419c4a6f50a1a74f9079d2936a07e2e575d3fe20fff7d510dce21ff156',1,'JabraSDK.STD_HID()']]],
+  ['steprate_19',['StepRate',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4a60d3a3ff03981abf680f2ed99626fdb2',1,'JabraSDK']]],
+  ['string_20',['String',['../namespace_jabra_s_d_k.html#a8993619dd7c5453b9a34cee13cb0ce41a27118326006d3829667a400ad23d5d98',1,'JabraSDK']]],
+  ['supportsotaupdate_21',['SupportsOtaUpdate',['../_interface___firmware_8h.html#af7f8dee29107905de08bf17a1cd5974faa6f8b0ed11aa9fa8271707307d8d8a5e',1,'Interface_Firmware.h']]],
+  ['systemerror_22',['SystemError',['../namespace_jabra_s_d_k.html#a780638a9286e0778034517eb84113f70ab932b91f686c2aa588adfd9a407155ca',1,'JabraSDK']]]
+];

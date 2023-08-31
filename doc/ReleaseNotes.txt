@@ -1,0 +1,235 @@
+---------------------------------------------
+  Release Notes for Jabra SDKv2 for Windows
+---------------------------------------------
+  Version : 1.12.2.0
+---------------------------------------------
+
+1.12.2.0 changes:
+- Added:
+	- Native library for Windows ARM64 (ARM64 not supported for .NET wrapper)
+- Fixes:
+	- Resolved potential memory leak through device attach/detach
+	- .NET SDK: HID events would sometimes arrive out of order
+	
+1.12.1.0 changes:
+- Updates:
+	- Added support for Jabra Link 400/Engage 55 (will present primary HS as a child device)
+	- Added networking device features
+	- Updated curl library
+	- .NET SDK: Added CameraStreamingStatusChanged event to IDeviceService
+	- .NET SDK: Added ParentDeviceID to IDevice
+- Fixes:
+	- Jabra_PreloadDeviceInfo/Jabra_PreloadAttachedDeviceInfo was unable to replace existing resources
+	- libjabra.dll now links against the DLL C Runtime (previously: static CRT)
+
+1.12.0.0 changes:
+- Added DECT connection type
+
+- Added APIs:
+	- Jabra_GetUserDefinedDeviceName
+	- Jabra_GetSubDeviceProperty
+
+	- Jabra_SetNetworkAuthenticationMode
+	- Jabra_GetNetworkAuthenticationMode
+	- Jabra_SetNetworkAuthenticationIdentity
+	- Jabra_RegisterNetworkStatusChangedCallback
+
+- Fixes:
+	- Memory leak during zip file extraction
+	- Increase factory reset wait timer to allow Engage 65/75 to finish before reporting an error
+	- Significantly reduced amount of network traffic
+	- Jabra_SetDateTime would errorneously reject some valid dates
+	- Event enables are now reference counted so they should remain active while they are needed by any clients
+	
+========================================================================================================
+
+Supported features
+* Remote Call Control (RCC) functionality - support for following commands:
+  - Acquire/release device call lock
+  - Answer and end call
+  - Mute and unmute call
+  - Hold and resume call
+  - Ring indication
+  - Manual audio
+* Device settings
+* Button configuration (button takeover and remote MMI)
+* Support for Bluetooth adapter (Link 360, Link 370 and Link 380)
+* Device information (serial number, firmware version, battery status)
+* Busylight indication
+* Concurrency support for multiple applications of SDK
+* Coexistence with Jabra Direct
+* Device events logging
+* Device firmware update
+* Log File Size and Backup
+* Concerning settings: The dongle and child devices are now handled as separate entities
+* Device catalogue and proxy server support
+* Device settings password protection
+* Control HID working state
+
+========================================================================================================
+
+- Supported devices:
+* AudioCodes HRS 457
+* DELL PRO STEREO HEADSET UC150
+* DELL PRO STEREO HEADSET UC350
+* HP UC Wired Headset V2
+* Jabra BIZ 1100 Mono
+* Jabra BIZ 1100 Stereo
+* Jabra BIZ 1500 USB Duo
+* Jabra BIZ 1500 USB Mono
+* Jabra BIZ 2300 USB Duo
+* Jabra BIZ 2300 USB Mono
+* Jabra BIZ 2400
+* Jabra BIZ 2400 II CC USB Mono MS
+* Jabra BIZ 2400 II CC USB Mono UC
+* Jabra BIZ 2400 II CC USB Stereo
+* Jabra BIZ 2400 II USB BT Duo MS
+* Jabra BIZ 2400 II USB BT Duo UC
+* Jabra BIZ 2400 II USB BT Mono MS
+* Jabra BIZ 2400 II USB BT Mono UC
+* Jabra BIZ 2400 USB MS Duo
+* Jabra BIZ 2400 USB Mono
+* Jabra BIZ 2400 USB UC Duo
+* Jabra Connect 4h
+* Jabra Connect 4s
+* Jabra DIAL 550
+* Jabra Engage 50 Mono
+* Jabra Engage 50 Stereo
+* Jabra Engage 65 Convertible
+* Jabra Engage 65 Mono
+* Jabra Engage 65 Stereo
+* Jabra Engage 75 Convertible
+* Jabra Engage 75 Mono
+* Jabra Engage 75 Stereo
+* Jabra Engage Convertible
+* Jabra Engage Mono
+* Jabra Engage Stereo
+* Jabra Evolve 20 Mono
+* Jabra Evolve 20 Stereo
+* Jabra Evolve 20SE Mono
+* Jabra Evolve 20SE Stereo
+* Jabra Evolve 30 II Mono
+* Jabra Evolve 30 II Stereo
+* Jabra Evolve 30 Mono
+* Jabra Evolve 30 Stereo
+* Jabra Evolve 40/80
+* Jabra Evolve 65 Mono
+* Jabra Evolve 65 Stereo
+* Jabra Evolve 65e
+* Jabra Evolve 65t
+* Jabra Evolve 65t Cradle
+* Jabra Evolve 75
+* Jabra Evolve 75e
+* Jabra Evolve2 30 Mono MS
+* Jabra Evolve2 30 Mono UC
+* Jabra Evolve2 30 Stereo MS
+* Jabra Evolve2 30 Stereo UC
+* Jabra Evolve2 40 Mono MS
+* Jabra Evolve2 40 Mono UC
+* Jabra Evolve2 40 Stereo MS
+* Jabra Evolve2 40 Stereo UC
+* Jabra Evolve2 65 Deskstand
+* Jabra Evolve2 65 Mono MS
+* Jabra Evolve2 65 Mono UC
+* Jabra Evolve2 65 Stereo MS
+* Jabra Evolve2 65 Stereo UC
+* Jabra Evolve2 7 MS
+* Jabra Evolve2 7 UC
+* Jabra Evolve2 75 Deskstand
+* Jabra Evolve2 75 MS
+* Jabra Evolve2 75 UC
+* Jabra Evolve2 85 Deskstand
+* Jabra Evolve2 85 MS
+* Jabra Evolve2 85 UC
+* Jabra Handset 450
+* Jabra LINK 230
+* Jabra LINK 260
+* Jabra LINK 265
+* Jabra LINK 280
+* Jabra LINK 30
+* Jabra LINK 32
+* Jabra LINK 33
+* Jabra LINK 360
+* Jabra LINK 370
+* Jabra LINK 370 Teams
+* Jabra LINK 380a
+* Jabra LINK 380a MS
+* Jabra LINK 380a Spk MS
+* Jabra LINK 380c
+* Jabra LINK 380c MS
+* Jabra LINK 43
+* Jabra LINK 44
+* Jabra LINK 850
+* Jabra LINK 860
+* Jabra LINK 950
+* Jabra Link 400 Convertible MS
+* Jabra Link 400 Convertible UC
+* Jabra Link 400 Mono MS
+* Jabra Link 400 Mono UC
+* Jabra Link 400 Stereo MS
+* Jabra Link 400 Stereo UC
+* Jabra MOTION UC
+* Jabra Motion Office
+* Jabra PanaCast 20
+* Jabra PanaCast 50
+* Jabra Pro 920
+* Jabra Pro 925 Dual Connectivity
+* Jabra Pro 925 Single Connectivity
+* Jabra Pro 930
+* Jabra Pro 935
+* Jabra Pro 935 Single Connectivity
+* Jabra Pro 9450
+* Jabra Pro 9460
+* Jabra Pro 9465/9470
+* Jabra SPEAK 410
+* Jabra SPEAK 450 Cisco
+* Jabra SPEAK 510
+* Jabra SPEAK 710 MS
+* Jabra SPEAK 710 Teams
+* Jabra SPEAK 710 UC
+* Jabra SPEAK 750 Teams
+* Jabra SPEAK 750 UC
+* Jabra SPEAK 810
+* Jabra STEALTH UC
+* Jabra SUPREME
+* Jabra SUPREME UC
+* Jabra Stealth
+* Jabra UC VOICE 150a Duo
+* Jabra UC VOICE 150a Duo MS
+* Jabra UC VOICE 150a Mono
+* Jabra UC VOICE 150a Mono MS
+* Jabra UC VOICE 250
+* Jabra UC VOICE 250 MS
+* Jabra UC VOICE 250a
+* Jabra UC VOICE 250a MS
+* Jabra UC VOICE 550a BT
+* Jabra UC VOICE 550a BT Mono
+* Jabra UC VOICE 550a Duo
+* Jabra UC VOICE 550a Duo MS
+* Jabra UC VOICE 550a Mono
+* Jabra UC VOICE 550a Mono MS
+* Jabra UC VOICE 750 Mono USB
+* Jabra UC VOICE 750 Mono USB MS
+* Jabra UC VOICE 750 USB
+* Jabra UC VOICE 750a Duo
+* Jabra UC VOICE 750a Duo MS
+* Jabra UC VOICE 750a Mono
+* Jabra UC VOICE 750a Mono MS
+* Lenovo Pro Wired Stereo VoIP Headset
+* Mitel Evolve 75
+* Mitel H10
+* Mitel H30
+* Mitel H40
+* Mitel S720
+* NXT Technologies HUB
+* NXT Technologies UC-2000 Stereo Headset
+* NXT Technologies UC-4000 Mono Headset
+* NXT Technologies UC-4000 No Headset
+* NXT Technologies UC-4000 Stereo Headset
+* NXT Technologies UC-5100
+* NXT Technologies UC-7000 Stereo Professional Headset
+* NXT Technologies UC-7500 Mono
+* NXT Technologies UC-7500 Stereo
+* USB2 Jabra Engage 75
+
+========================================================================================================

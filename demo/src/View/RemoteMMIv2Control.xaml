@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.RemoteMMIv2Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+            mc:Ignorable="d" Height="180" Width="770">
+  <Grid>
+    <GroupBox VerticalAlignment="Center" BorderThickness="1" BorderBrush="Gray" >
+      <GroupBox.Header>
+        <TextBlock Text="{Binding RemoteMMIv2Control.TypeName}" FontWeight="Bold"/>
+      </GroupBox.Header>
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="10"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Header="Input" BorderThickness="1" BorderBrush="Gray" Visibility="{Binding RemoteMMIv2Control.EnableInput, Converter={converter:BooleanToVisibilityConverter}}" >
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="22"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="50"/>
+              <ColumnDefinition Width="200"/>
+              <ColumnDefinition Width="10"/>
+              <ColumnDefinition Width="65"/>
+              <ColumnDefinition Width="145"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Left" Text="Action" Margin="2" TextTrimming="CharacterEllipsis" FontWeight="Bold" />
+            <TextBlock Grid.Row="0" Grid.Column="3" TextAlignment="Left" Text="Priority" Margin="2" TextTrimming="CharacterEllipsis" FontWeight="Bold" />
+            <TextBlock Grid.Row="2" Grid.Column="3" TextAlignment="Left" Text="Function" Margin="2" TextTrimming="CharacterEllipsis" FontWeight="Bold" />
+            <TextBlock Grid.Row="4" Grid.Column="3" TextAlignment="Left" Text="Focus" Margin="2" TextTrimming="CharacterEllipsis" FontWeight="Bold" />
+            <ListView Grid.RowSpan="10" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding RemoteMMIv2Control.InputActions}" SelectionMode="Extended" SelectedValuePath="Value" DisplayMemberPath="Type">
+              <ListView.View>
+                <GridView>
+                  <GridView.ColumnHeaderContainerStyle>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                      <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                  </GridView.ColumnHeaderContainerStyle>
+                  <GridViewColumn>
+                    <GridViewColumn.CellTemplate>
+                      <DataTemplate>
+                        <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                      </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                  </GridViewColumn>
+                  <GridViewColumn>
+                    <GridViewColumn.CellTemplate>
+                      <DataTemplate>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding Type, Mode=TwoWay}"/>
+                      </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                  </GridViewColumn>
+                </GridView>
+              </ListView.View>
+            </ListView>
+            <ComboBox Grid.Row="0" Grid.Column="5" Style="{DynamicResource ControlComboBox}" Name="CmbPriority" IsSelected="True" ItemsSource="{Binding RemoteMMIv2Control.Priorities}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding RemoteMMIv2Control.PriorityCurrentValue}" />
+            <ComboBox Grid.Row="2" Grid.Column="5" Style="{DynamicResource ControlComboBox}" Name="CmbAppButtonConfig" IsSelected="True" ItemsSource="{Binding RemoteMMIv2Control.AppFunctions}" SelectedValuePath="Value" DisplayMemberPath="Value" SelectedValue="{Binding RemoteMMIv2Control.AppFunctionCurrentValue}" IsEnabled="{Binding RemoteMMIv2Control.EnableAppActions}" />
+            <TextBlock Grid.Row="4" Grid.Column="5" Style="{DynamicResource ControlTextBlock}" TextAlignment="Left" Text="{Binding RemoteMMIv2Control.IsInFocus}" Margin="3" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+            <Button Grid.Row="8" Grid.Column="5" Name="SetMmi" Content="Set MMI" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding SetMmiCommand}"  Width="65" />
+            <Button Grid.Row="8" Grid.Column="5" Name="ResetMmi" Content="Reset MMI" HorizontalAlignment="Right" VerticalAlignment="Center" Command="{Binding ResetMmiCommand}"  Width="65" />
+          </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="2" Header="Output" BorderThickness="1" BorderBrush="Gray" Visibility="{Binding RemoteMMIv2Control.EnableOutput, Converter={converter:BooleanToVisibilityConverter}}" >
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="20"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="70"/>
+              <ColumnDefinition Width="180"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Red" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"  />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Green" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"  />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Blue" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+            <wpfTool:IntegerUpDown BorderThickness="2" Grid.Row="0" Grid.Column="1" Width="100"  HorizontalAlignment="Left"  VerticalAlignment="Center" Value="{Binding RemoteMMIv2Control.RedOutputValue}" Increment="1" Minimum="0" Maximum="255" Name="btnRed" IsEnabled="{Binding RemoteMMIv2Control.EnableRmmiv2RedOutput}" FormatString="N0"  />
+            <wpfTool:IntegerUpDown BorderThickness="2" Grid.Row="2" Grid.Column="1" Width="100"  HorizontalAlignment="Left"  VerticalAlignment="Center" Value="{Binding RemoteMMIv2Control.GreenOutputValue}" Increment="1" Minimum="0" Maximum="255" Name="btnGreen" IsEnabled="{Binding RemoteMMIv2Control.EnableRmmiv2GreenOutput}" FormatString="N0"  />
+            <wpfTool:IntegerUpDown BorderThickness="2" Grid.Row="4" Grid.Column="1" Width="100"  HorizontalAlignment="Left"  VerticalAlignment="Center" Value="{Binding RemoteMMIv2Control.BlueOutputValue}" Increment="1" Minimum="0" Maximum="255" Name="btnBlue" IsEnabled="{Binding RemoteMMIv2Control.EnableRmmiv2BlueOutput}" FormatString="N0"  />
+            <TextBlock Grid.Row="6" Grid.Column="0" TextAlignment="Left" Margin="2" Text="Sequence" TextTrimming="CharacterEllipsis" FontWeight="Bold" />
+            <ComboBox Width="180" Grid.Row="6" Grid.Column="1" Style="{DynamicResource ControlComboBox}" Name="CmbLedSequence" IsSelected="True"  HorizontalAlignment="Left" VerticalAlignment="Center" ItemsSource="{Binding RemoteMMIv2Control.Sequences}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding RemoteMMIv2Control.SequenceCurrentValue}" />
+            <Button Grid.Row="8" Grid.Column="1" Name="btnSetOutput" Margin="2" Content="Set Output" Width="65" HorizontalAlignment="Right" VerticalAlignment="Center" Command="{Binding SetOutputCommand}" />
+          </Grid>
+        </GroupBox>
+      </Grid>
+    </GroupBox>
+  </Grid>
+</UserControl>

@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>7.3</LangVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{4A3E0E33-D1AC-4010-874C-BE6C28454635}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jabra_SDK_Demo</RootNamespace>
+    <AssemblyName>Jabra-SDK-Demo</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Jabra_SDK_Demo.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converter\BoolToBoolConverter.cs" />
+    <Compile Include="Converter\BoolToOppositeBoolConverter.cs" />
+    <Compile Include="Converter\CoverterItemsSource2Enabled.cs" />
+    <Compile Include="Converter\MultiConverter.cs" />
+    <Compile Include="Helpers\AudioUtilities.cs" />
+    <Compile Include="Helpers\BtPairingHelper.cs" />
+    <Compile Include="Helpers\DeviceSettingsGUIDHelper.cs" />
+    <Compile Include="Helpers\DialogService.cs" />
+    <Compile Include="Helpers\IntegrationService.cs" />
+    <Compile Include="Helpers\PairingListInformation.cs" />
+    <Compile Include="Helpers\PasswordBoxAssistant.cs" />
+    <Compile Include="Helpers\UIServices.cs" />
+    <Compile Include="Helpers\UnwrittenConfigurableButtons.cs" />
+    <Compile Include="Helpers\RemoteMMIv2Setting.cs" />
+    <Compile Include="Helpers\ViewModelFactory.cs" />
+    <Compile Include="Helpers\CommonMethods.cs" />
+    <Compile Include="Helpers\DependencyFeatures.cs" />
+    <Compile Include="Helpers\MessageBoxService.cs" />
+    <Compile Include="Helpers\NativeCommonLibrary.cs" />
+    <Compile Include="Helpers\SettingsInformation.cs" />
+    <Compile Include="Helpers\SpecialHandlers.cs" />
+    <Compile Include="Helpers\UnWrittenSettings.cs" />
+    <Compile Include="Helpers\UserControlDetails.cs" />
+    <Compile Include="Helpers\ValidationErrors.cs" />
+    <Compile Include="Model\BtPairing.cs" />
+    <Compile Include="Model\ButtonTakeOver.cs" />
+    <Compile Include="Model\DefaultDeviceInformation.cs" />
+    <Compile Include="Model\VideoConfiguration.cs" />
+    <Compile Include="Model\Whiteboard.cs" />
+    <Compile Include="Model\DeviceLogging.cs" />
+    <Compile Include="Model\FirmwareUpdates.cs" />
+    <Compile Include="Model\MainWindow.cs" />
+    <Compile Include="Model\RemoteMMIControl.cs" />
+    <Compile Include="Model\Authorization.cs" />
+    <Compile Include="Model\RemoteMMIv2.cs" />
+    <Compile Include="Model\RemoteMMIv2Control.cs" />
+    <Compile Include="ViewModel\BtPairingViewModel.cs" />
+    <Compile Include="ViewModel\ButtonControlViewModel.cs" />
+    <Compile Include="ViewModel\ButtonTakeOverViewModel.cs" />
+    <Compile Include="ViewModel\CallControlViewModel.cs" />
+    <Compile Include="ViewModel\ComboBoxControlViewModel.cs" />
+    <Compile Include="ViewModel\ConnectedDevicesControlViewModel.cs" />
+    <Compile Include="ViewModel\DefaultDeviceInformationViewModel.cs" />
+    <Compile Include="ViewModel\DeviceInformationViewModel.cs" />
+    <Compile Include="ViewModel\SimpleValueViewModel.cs" />
+    <Compile Include="ViewModel\VideoConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\WhiteboardViewModel.cs" />
+    <Compile Include="ViewModel\DeviceLoggingViewModel.cs" />
+    <Compile Include="ViewModel\DeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\DisposeMethods.cs" />
+    <Compile Include="ViewModel\ExpanderControlViewModel.cs" />
+    <Compile Include="ViewModel\FirmwareUpdatesViewModel.cs" />
+    <Compile Include="ViewModel\HeaderControlViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\RadioButtonControlViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\RemoteMMIControlViewModel.cs" />
+    <Compile Include="ViewModel\RemoteMMIv2ControlViewModel.cs" />
+    <Compile Include="ViewModel\RemoteMMIv2ViewModel.cs" />
+    <Compile Include="ViewModel\StaticTextControlViewModel.cs" />
+    <Compile Include="ViewModel\TextControlViewModel.cs" />
+    <Compile Include="ViewModel\AuthorizationViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Commands\CommandHandler.cs" />
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converter\InvertableBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converter\StringNullOrEmptyToVisibilityConverter.cs" />
+    <Compile Include="Converter\StringToVisibleTooltip.cs" />
+    <Compile Include="View\BtPairing.xaml.cs">
+      <DependentUpon>BtPairing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ButtonControl.xaml.cs">
+      <DependentUpon>ButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ButtonTakeOver.xaml.cs">
+      <DependentUpon>ButtonTakeOver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CallControl.xaml.cs">
+      <DependentUpon>CallControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimpleValue.xaml.cs">
+      <DependentUpon>SimpleValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VideoConfiguration.xaml.cs">
+      <DependentUpon>VideoConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Whiteboard.xaml.cs">
+      <DependentUpon>Whiteboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceLogging.xaml.cs">
+      <DependentUpon>DeviceLogging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FirmwareUpdates.xaml.cs">
+      <DependentUpon>FirmwareUpdates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComboBoxControl.xaml.cs">
+      <DependentUpon>ComboBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConnectedDevicesControl.xaml.cs">
+      <DependentUpon>ConnectedDevicesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DefaultDeviceInformation.xaml.cs">
+      <DependentUpon>DefaultDeviceInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceInformation.xaml.cs">
+      <DependentUpon>DeviceInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceSettings.xaml.cs">
+      <DependentUpon>DeviceSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExpanderControl.xaml.cs">
+      <DependentUpon>ExpanderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HeaderControl.xaml.cs">
+      <DependentUpon>HeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RadioButtonControl.xaml.cs">
+      <DependentUpon>RadioButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RemoteMMIControl.xaml.cs">
+      <DependentUpon>RemoteMMIControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RemoteMMIv2.xaml.cs">
+      <DependentUpon>RemoteMMIv2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RemoteMMIv2Control.xaml.cs">
+      <DependentUpon>RemoteMMIv2Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaticTextControl.xaml.cs">
+      <DependentUpon>StaticTextControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TextControl.xaml.cs">
+      <DependentUpon>TextControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BtPairing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ButtonTakeOver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CallControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SimpleValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VideoConfiguration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Whiteboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DeviceLogging.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FirmwareUpdates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ComboBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConnectedDevicesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DefaultDeviceInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DeviceInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DeviceSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExpanderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RadioButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RemoteMMIControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RemoteMMIv2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RemoteMMIv2Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StaticTextControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TextControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\ButtonControl.cs" />
+    <Compile Include="Model\CallControl.cs" />
+    <Compile Include="Model\ComboBoxControl.cs" />
+    <Compile Include="Model\CommonControls.cs" />
+    <Compile Include="Model\ConnectedDevicesControl.cs" />
+    <Compile Include="Model\DeviceInformation.cs" />
+    <Compile Include="Model\DeviceSettings.cs" />
+    <Compile Include="Model\ExpanderControl.cs" />
+    <Compile Include="Model\HeaderControl.cs" />
+    <Compile Include="Model\RadioButtonControl.cs" />
+    <Compile Include="Model\StaticTextControl.cs" />
+    <Compile Include="Model\TextControl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Jabra.ico" />
+    <Resource Include="Images\Default_380x380.png" />
+    <Resource Include="Images\Default_80x80.png" />
+    <Resource Include="Images\JabraHeaderLogo.png" />
+    <Resource Include="Images\Phone.png" />
+    <Resource Include="Images\refresh.png" />
+    <Resource Include="Images\BtConnected.png" />
+    <Resource Include="Images\BtNotConnected.png" />
+    <Resource Include="Images\Play.png" />
+    <Resource Include="Images\PlayDimmed.png" />
+    <Resource Include="Images\Padlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="JabraSDK" Version="1.11.0" />
+    <PackageReference Include="Expression.Blend.Sdk" Version="1.0.2" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
+    <PackageReference Include="MvvmLight" Version="5.3.0" />
+    <PackageReference Include="NAudio" Version="1.8.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['label_0',['Label',['../namespace_jabra_s_d_k.html#a20b99b4272605b3ebebf5dc78c436639ab021df6aac4654c454f46c77646e745f',1,'JabraSDK']]],
+  ['lastname_1',['LastName',['../class_jabra_s_d_k_1_1_product_registration_info.html#adca52012875c71a6f0e143fcbfa1adec',1,'JabraSDK::ProductRegistrationInfo']]],
+  ['latest_2',['Latest',['../namespace_jabra_s_d_k.html#aa30a001c256a78919a35ff5ca040f2c9acd118d21c3b0b4762c6e0063661e6e45',1,'JabraSDK']]],
+  ['left_3',['LEFT',['../namespace_jabra_s_d_k.html#ae3fd6465ddb4c0f897f4ce38134ab84ea684d325a7303f52e64011467ff5c5758',1,'JabraSDK']]],
+  ['leftearbudstatus_4',['LeftEarbudStatus',['../interface_jabra_s_d_k_1_1_i_device.html#a2a1570e3a5f7815f89eb16f781506a9e',1,'JabraSDK::IDevice']]],
+  ['leftearbudstatuseventargs_5',['LeftEarbudStatusEventArgs',['../class_jabra_s_d_k_1_1_left_earbud_status_event_args.html',1,'JabraSDK']]],
+  ['levelinpercent_6',['LevelInPercent',['../class_jabra_s_d_k_1_1_battery_status.html#a7570d1e973ecb7a8a1e0ecbed5dcc2ad',1,'JabraSDK.BatteryStatus.LevelInPercent()'],['../class_jabra_s_d_k_1_1_battery_status_unit.html#ad4db075d7b361c877222a279dff60120',1,'JabraSDK.BatteryStatusUnit.LevelInPercent()'],['../class_jabra_s_d_k_1_1_battery_change_event_args.html#a2bbceb5df465f89d8d9c6425ae9f6e90',1,'JabraSDK.BatteryChangeEventArgs.LevelInPercent()'],['../class_jabra_s_d_k_1_1_battery_status_update_event_args.html#a10674835b20f390319e85357423113ea',1,'JabraSDK.BatteryStatusUpdateEventArgs.LevelInPercent()']]],
+  ['limitedwizardmode_7',['LimitedWizardMode',['../namespace_jabra_s_d_k.html#ab785f18019c5c3d79b237a5ad3ef804caf0073376187ecd72999df567bfe0bb8a',1,'JabraSDK.LimitedWizardMode()'],['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4af0073376187ecd72999df567bfe0bb8a',1,'JabraSDK.LimitedWizardMode()']]],
+  ['linebusy_8',['LineBusy',['../namespace_jabra_s_d_k.html#a03606eb4e93727a021c31d2fe2117534a00ae7f697904983240b565eec68d2d39',1,'JabraSDK.LineBusy()'],['../namespace_jabra_s_d_k.html#a5dcec0b8ec0d6f001febe8a482c8a2fea00ae7f697904983240b565eec68d2d39',1,'JabraSDK.LineBusy()']]],
+  ['linkquality_9',['LinkQuality',['../interface_jabra_s_d_k_1_1_i_device.html#a7d5ba2a50a1e42eaa28eabf040fb44ff',1,'JabraSDK.IDevice.LinkQuality()'],['../namespace_jabra_s_d_k.html#a5509d2d282154cd7b4b5a4a517af4a84',1,'JabraSDK.LinkQuality()']]],
+  ['linkqualityeventargs_10',['LinkQualityEventArgs',['../class_jabra_s_d_k_1_1_link_quality_event_args.html',1,'JabraSDK']]],
+  ['local_11',['Local',['../namespace_jabra_s_d_k.html#acb25cb54fc9b7cbfd5790300bbeb2d03a509820290d57f333403f490dde7316f4',1,'JabraSDK']]],
+  ['locale_12',['Locale',['../class_jabra_s_d_k_1_1_product_registration_info.html#adb6052101af0d4e1efe3d090c22f2e95',1,'JabraSDK::ProductRegistrationInfo']]],
+  ['lock_13',['Lock',['../interface_jabra_s_d_k_1_1_i_device.html#ae6b1f5f7aecc68b8f5240d043e8dcdef',1,'JabraSDK::IDevice']]],
+  ['logging_14',['Logging',['../namespace_jabra_s_d_k.html#acb25cb54fc9b7cbfd5790300bbeb2d03',1,'JabraSDK.Logging()'],['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4a8db7df66ab1d7ab5f1dc947acdb5fae4',1,'JabraSDK.Logging()']]],
+  ['loggingconfiguration_15',['LoggingConfiguration',['../interface_jabra_s_d_k_1_1_i_device_service.html#a2b3cca227a891f884ccc7e77699dc2df',1,'JabraSDK::IDeviceService']]],
+  ['loggingeventargs_16',['LoggingEventArgs',['../class_jabra_s_d_k_1_1_logging_event_args.html',1,'JabraSDK']]],
+  ['logginginput_17',['LoggingInput',['../interface_jabra_s_d_k_1_1_i_device_service.html#aa90265023b8bfcbdb185af079eb82d25',1,'JabraSDK::IDeviceService']]]
+];

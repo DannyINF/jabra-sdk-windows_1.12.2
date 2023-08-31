@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.ExpanderControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:userControl="clr-namespace:Jabra_SDK_Demo.View"
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+             xmlns:viewModel="clr-namespace:Jabra_SDK_Demo.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="800">
+  <Grid  ToolTipService.ShowDuration="120000" IsEnabled="{Binding ExpanderControl.ControlEnabled}">
+    <Expander HorizontalAlignment="Left" VerticalAlignment="Center" IsExpanded="True">
+      <Expander.ToolTip>
+        <ToolTip Visibility="{Binding ExpanderControl.HelpText, Converter={converter:StringNullOrEmptyToVisibilityConverter}}" Padding="2,0">
+          <StackPanel>
+            <TextBlock FontWeight="Bold" Text="{Binding ExpanderControl.Label}" TextWrapping="Wrap" />
+            <TextBlock Text="{Binding ExpanderControl.HelpText}" TextWrapping="Wrap" Width="600"/>
+          </StackPanel>
+        </ToolTip>
+      </Expander.ToolTip>
+      <Expander.Header>
+        <TextBlock Text="{Binding ExpanderControl.Label}"   FontWeight="Bold" FontSize="15"/>
+      </Expander.Header>
+      <StackPanel  Orientation="Vertical" HorizontalAlignment="Left"  Name="SpSettings" Margin="5,5,5,5" >
+        <ListBox Background="#f2f2f2" Name="LstDeviceSettings" ItemsSource="{Binding UserControlList}" BorderThickness="0" >
+          <ListBox.Resources>
+            <DataTemplate DataType="{x:Type viewModel:ComboBoxControlViewModel}">
+              <userControl:ComboBoxControl x:Name="ComboBoxControl"  ></userControl:ComboBoxControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:StaticTextControlViewModel}">
+              <userControl:StaticTextControl x:Name="StaticTextControl"></userControl:StaticTextControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:TextControlViewModel}">
+              <userControl:TextControl x:Name="TextControl"></userControl:TextControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ButtonControlViewModel}">
+              <userControl:ButtonControl x:Name="ButtonControl"></userControl:ButtonControl>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RadioButtonControlViewModel}">
+              <userControl:RadioButtonControl x:Name="RadioButtonControl"></userControl:RadioButtonControl>
+            </DataTemplate>
+          </ListBox.Resources>
+        </ListBox>
+      </StackPanel>
+    </Expander>
+  </Grid>
+</UserControl>
+

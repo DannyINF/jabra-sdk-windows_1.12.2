@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.FirmwareUpdates"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jabra_SDK_Demo.View"
+        xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d" Height="580" Width="700">
+  <Grid Background="#f2f2f2">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="10"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="380"/>
+      <RowDefinition Height="5"/>
+      <RowDefinition Height="25"/>
+      <RowDefinition Height="30"/>
+      <RowDefinition Height="5"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="5"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="200"/>
+      <ColumnDefinition Width="200"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Button Grid.Column="0" Grid.Row="1" Name="CheckForUpdate" Width="110" Height="30" Background="White" HorizontalAlignment="Left" VerticalContentAlignment="Center" Content="Check for Update" Command="{Binding ClickCheckForFirmwareUpdateCommand}" Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:BooleanToVisibilityConverter}}"/>
+    <Label Grid.Column="1" Grid.Row="1" Name="FwLocklLabel" Width="90" Height="25" Content="Firmware lock :" Margin="10,5.6,100,10.2" />
+    <TextBlock Grid.Column="1" Grid.Row="1" Name="FwLockTxt" Width="50" Height="20" Text="{Binding FirmwareUpdate.IsFwLockEnabled}" Margin="100,10.6,50,10.2" />
+    <TextBlock Grid.Column="0" Grid.Row="2" x:Name="Plaintext" Text="Available firmwares"  HorizontalAlignment="Left"></TextBlock>
+    <ListView Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="3" VerticalAlignment="Stretch" Name="FirmwareListBox" ItemsSource="{Binding FirmwareUpdate.FirmwareInformation, UpdateSourceTrigger=LostFocus}" 
+           SelectedItem="{Binding FirmwareUpdate.SelectedItem, Mode=TwoWay}" DisplayMemberPath="Name" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False" >
+      <ListView.Resources>
+        <ResourceDictionary>
+          <Style x:Key="DisableResizeStyle" TargetType="GridViewColumnHeader">
+            <Setter Property="IsHitTestVisible" Value="False"/>
+          </Style>
+        </ResourceDictionary>
+      </ListView.Resources>
+      <ListView.ItemContainerStyle>
+        <Style TargetType="{x:Type ListViewItem}">
+          <Setter Property="BorderBrush" Value="LightGray" />
+          <Setter Property="BorderThickness" Value="0,0,0,1" />
+        </Style>
+      </ListView.ItemContainerStyle>
+      <ListView.View>
+        <GridView>
+          <GridViewColumn  Header="Stage" Width="75" DisplayMemberBinding="{Binding Path=Stage}" HeaderContainerStyle="{StaticResource DisableResizeStyle}"/>
+          <GridViewColumn  Header="Version" Width="75" DisplayMemberBinding="{Binding Path=Version}" HeaderContainerStyle="{StaticResource DisableResizeStyle}"/>
+          <GridViewColumn Header="Size" Width="75" DisplayMemberBinding="{Binding Path=Size}" HeaderContainerStyle="{StaticResource DisableResizeStyle}"/>
+          <GridViewColumn Header="Release Date" Width="150" DisplayMemberBinding="{Binding Path=ReleaseDate}" HeaderContainerStyle="{StaticResource DisableResizeStyle}"/>
+          <GridViewColumn Header="Release Notes" Width="370" HeaderContainerStyle="{StaticResource DisableResizeStyle}">
+            <GridViewColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding Path=ReleaseNotes}" TextWrapping="Wrap"/>
+              </DataTemplate>
+            </GridViewColumn.CellTemplate>
+          </GridViewColumn>
+        </GridView>
+      </ListView.View>
+    </ListView>
+    <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="5"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding FirmwareUpdate.Message}" Visibility="{Binding FirmwareUpdate.ProgressVisibility,Converter={converter:BooleanToVisibilityConverter}}" />
+    <ProgressBar Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="6" Value="{Binding FirmwareUpdate.Progress}" Maximum="100"  Minimum="0" Visibility="{Binding FirmwareUpdate.ProgressVisibility,Converter={converter:BooleanToVisibilityConverter}}" />
+    <Grid Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="8">
+      <Grid.ColumnDefinitions >
+        <ColumnDefinition Width="200"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="200"/>
+      </Grid.ColumnDefinitions>
+      <Button  Grid.Column="1" HorizontalAlignment="Right" x:Name="BtnDownload" Content="{Binding FirmwareUpdate.DownloadCancel}"  Height="40" Width="100" Command="{Binding ClickDownloadCancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Content}"/>
+      <Button Grid.Column="2"  HorizontalAlignment="Right" x:Name="BtnUpdate" Content="Update" Height="40" Width="100" Command="{Binding ClickUpdateFirmwareCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" IsEnabled="{Binding FirmwareUpdate.FileDownloaded,Converter={converter:BooleanToVisibilityConverter}}" ></Button>
+    </Grid>
+  </Grid>
+</UserControl>

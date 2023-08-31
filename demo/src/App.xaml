@@ -1,0 +1,75 @@
+﻿<Application x:Class="Jabra_SDK_Demo.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+	           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Jabra_SDK_Demo.ViewModel"
+             xmlns:view="clr-namespace:Jabra_SDK_Demo.View"
+             xmlns:helpers="clr-namespace:Jabra_SDK_Demo.Helpers"              
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <ResourceDictionary>
+      <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
+      <DataTemplate DataType="{x:Type vm:HeaderControlViewModel}">
+        <view:HeaderControl />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:ConnectedDevicesControlViewModel}">
+        <view:ConnectedDevicesControl />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:DeviceInformationViewModel}">
+        <view:DeviceInformation />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:DeviceSettingsViewModel}">
+        <view:DeviceSettings />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:CallControlViewModel}">
+        <view:CallControl />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:DefaultDeviceInformationViewModel}">
+        <view:DefaultDeviceInformation />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:BtPairingViewModel}">
+        <view:BtPairing />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:ButtonTakeOverViewModel}">
+        <view:ButtonTakeOver />
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:FirmwareUpdatesViewModel}">
+        <view:FirmwareUpdates/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:AuthorizationViewModel}">
+        <view:Authorization/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:DeviceLoggingViewModel}">
+        <view:DeviceLogging/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:WhiteboardViewModel}">
+        <view:Whiteboard/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:VideoConfigurationViewModel}">
+        <view:VideoConfiguration/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:SimpleValueViewModel}">
+        <view:SimpleValue/>
+      </DataTemplate>
+      <DataTemplate DataType="{x:Type vm:RemoteMMIv2ViewModel}">
+        <view:RemoteMMIv2 />
+      </DataTemplate>
+      <converter:BoolToBoolConverter x:Key="BoolToBoolConverter"></converter:BoolToBoolConverter>
+      <converter:BoolToOppositeBoolConverter x:Key="BoolToOppositeBoolConverter"></converter:BoolToOppositeBoolConverter>
+      <converter:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+      <converter:InvertableBooleanToVisibilityConverter x:Key="InvertableBoolToVisibilityConverter" />
+      <converter:StringNullOrEmptyToVisibilityConverter x:Key="StringNullOrEmptyToVisibilityConverter" />
+      <converter:StringToVisibleTooltip x:Key="StringToVisibleTooltip" />
+      <converter:MultiConverter x:Key="MultiConverter"></converter:MultiConverter>
+      <converter:CoverterItemsSource2Enabled x:Key="CoverterItemsSource2Enabled"></converter:CoverterItemsSource2Enabled>
+      <helpers:SpecialHandlers x:Key="SpecialHandlers" />
+      <helpers:IntegrationService x:Key="IntegrationService" />
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles/Styles.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

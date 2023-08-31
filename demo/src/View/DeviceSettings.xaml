@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.DeviceSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Jabra_SDK_Demo.View"
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d"  d:DesignWidth="800"
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="Loaded">
+      <i:InvokeCommandAction Command="{Binding WindowLoaded}"/>
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
+  <Grid Background="#f2f2f2" HorizontalAlignment="Stretch" Margin="-2,0,-5,0" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="500"/>
+    </Grid.RowDefinitions>
+    <Border Background="#f2f2f2" />
+    <Menu Grid.Row="0" x:Name="MenuOptions"  Width="80" Height="20" Background="White" Margin="320,5,5,5" IsEnabled="{Binding DeviceSettings.EnableCancel}" >
+      <MenuItem Header="Settings..." Width="80" Height="20"  BorderBrush="Gray" VerticalContentAlignment="Center">
+        <MenuItem Header="Restore default" IsEnabled="{Binding DeviceSettings.RestoreDefault}" Command="{Binding ClickRestoreDefaultCommand}"  />
+        <MenuItem Header="Upload Ringtone" IsEnabled="{Binding DeviceSettings.UploadRingtone}" Command="{Binding ClickUploadRingtoneCommand}"  />
+        <MenuItem Header="Upload Image" IsEnabled="{Binding DeviceSettings.UploadImage}" Command="{Binding ClickUploadImageCommand}"  />
+      </MenuItem>
+    </Menu>
+    <Button  Grid.Row="0" x:Name="ButtonCancel" Content="Cancel" Background="White" Width="80" Height="20" Margin="500,5,5,5" Command="{Binding ClickClearCommand}" IsEnabled="{Binding DeviceSettings.EnableCancel}"/>
+    <Button IsEnabled="{Binding EnableDisableButton, Source={StaticResource SpecialHandlers}}" Grid.Row="0" x:Name="ButtonApply" Content="Apply" Background="White" Width="80" Height="20" Margin="680,5,5,5" Command="{Binding ClickApplyCommand}"/>
+
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="1" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding DeviceSettings.Message}" Visibility="{Binding DeviceSettings.ProgressVisibility, Converter={converter:BooleanToVisibilityConverter}}" />
+      <ProgressBar Grid.Row="1" VerticalAlignment="Stretch" Height="20" HorizontalAlignment="Stretch" Visibility="{Binding DeviceSettings.ProgressVisibility, Converter={converter:BooleanToVisibilityConverter}}" Value="{Binding DeviceSettings.Progress,UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Maximum="100" Minimum="0" DockPanel.Dock="Top" />
+    </Grid>
+    <wpfTool:DateTimePicker Grid.Row="2" x:Name="picker" HorizontalAlignment="Left" Width="Auto" Height="20" Format="Custom" FormatString="MM/dd/yyyy h:mm tt" TimeFormat="UniversalSortableDateTime" TimeFormatString="HH:mm:ss"
+                            Value="{Binding DeviceSettings.DateTimeVal}" Visibility="{Binding DeviceSettings.SetDateTime, Converter={converter:BooleanToVisibilityConverter}}">
+    </wpfTool:DateTimePicker>
+    <Button  Grid.Row="2" Visibility="{Binding DeviceSettings.SetDateTime, Converter={converter:BooleanToVisibilityConverter}}" HorizontalAlignment="Left" x:Name="ButtonSetDateTime" Content="Set date and time" Margin="180,5,5,5" Background="White" Width="120" Height="20" Command="{Binding ClickSetDateTimeCommand}" IsEnabled="{Binding DeviceSettings.SetDateTime}"/>
+        <Button  Grid.Row="3" Visibility="{Binding DeviceSettings.SetDateTime, Converter={converter:BooleanToVisibilityConverter}}" HorizontalAlignment="Left" x:Name="ButtonSetLocalTime" Content="Set local date and time" Margin="0,5,5,5" Background="White" Width="150" Height="20" Command="{Binding ClickSetLocalDateTimeCommand}" IsEnabled="{Binding DeviceSettings.SetDateTime}"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="4" Visibility="{Binding DeviceSettings.EnableCancel, Converter={converter:BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <wpfTool:DateTimePicker Grid.Row="0" Grid.Column="0" x:Name="timestampPicker" HorizontalAlignment="Left" Width="Auto" Height="20" Format="Custom" FormatString="MM/dd/yyyy h:mm:ss tt" TimeFormat="UniversalSortableDateTime" TimeFormatString="HH:mm:ss" Value="{Binding DeviceSettings.TimestampVal}">
+            </wpfTool:DateTimePicker>
+            <Button  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" x:Name="ButtonSetTimestamp" Content="Set timestamp in device" Margin="5,5,5,5" Background="White" Width="150" Height="20" Command="{Binding ClickSetTimestampCommand}"/>
+            <Button  Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" x:Name="ButonReadTimestamp" Content="Read timestamp in device" Margin="5,5,5,5" Background="White" Width="150" Height="20" Command="{Binding ClickReadTimestampCommand}" />
+        </Grid>
+        <Grid Grid.Row="5" HorizontalAlignment="Left" Visibility="{Binding DeviceSettings.WizardMode, Converter={converter:BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ComboBox Name="WizardComboBox" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="275" Height="25" SelectedIndex="{Binding DeviceSettings.CurrentWizardMode}">
+                <ComboBoxItem Content="Run full setup wizard on next power-on" Visibility="{Binding DeviceSettings.FullWizardMode, Converter={converter:BooleanToVisibilityConverter}}"/>
+                <ComboBoxItem Content="Run limited setup wizard on next power-on" Visibility="{Binding DeviceSettings.LimitedWizardMode, Converter={converter:BooleanToVisibilityConverter}}"/>
+                <ComboBoxItem Content="Do not run setup wizard on next power-on" />
+            </ComboBox>
+            <Button Name="SetWizardModeButton" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" Background="White" Width="150" Height="20" Content="Set wizard mode" Command="{Binding ClickSetWizardModeCommand}"/>
+            <Button Name="GetWizardModeButton" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="0" Margin="5,5,5,5" Background="White" Width="150" Height="20" Content="Read current wizard mode" Command="{Binding ClickGetWizardModeCommand}"/>
+        </Grid>
+        <Grid Grid.Row="6" Visibility="{Binding DeviceSettings.EnableCancel, Converter={converter:InvertableBooleanToVisibilityConverter}}" Margin="0,0,5,-3" Background="#f2f2f2">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0"  VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold"  FontSize="12" Text="Settings cannot be displayed as the device is not locked." Visibility="{Binding DeviceSettings.DFUmode, Converter={converter:BooleanToVisibilityConverter}}" Grid.ColumnSpan="2" Margin="124,0,123.8,0"/>
+      <TextBlock Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold"  FontSize="12" Text="Go to 'Device Information' tab, lock the device and then select 'Device Settings' tab!" Visibility="{Binding DeviceSettings.DFUmode, Converter={converter:BooleanToVisibilityConverter}}" Grid.ColumnSpan="2" Margin="44,0,42.8,0"/>
+      <TextBlock Grid.Row="0"  VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold"  FontSize="12" Text="Device is in firmware update mode" Visibility="{Binding DeviceSettings.DFUmode, Converter={converter:InvertableBooleanToVisibilityConverter}}" Grid.ColumnSpan="2" Margin="124,0,123.8,5"/>
+    </Grid>
+    <ScrollViewer Grid.Row="7" VerticalScrollBarVisibility="Auto" Background="#f2f2f2" Margin="0,0,0,-10" >
+      <ListBox Background="#f2f2f2" Name="LstDeviceSettings" ItemsSource="{Binding ExpanderControlList}" BorderThickness="0" Visibility="{Binding DeviceSettings.EnableCancel, Converter={converter:BooleanToVisibilityConverter}}">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <VirtualizingStackPanel IsItemsHost="True" Orientation="Vertical"/>
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBox.ItemTemplate>
+          <DataTemplate >
+            <local:ExpanderControl x:Name="ExpanderControl"></local:ExpanderControl>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

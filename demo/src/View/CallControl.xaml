@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.CallControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+             mc:Ignorable="d" Height="Auto" Width="800">
+  <Grid Background="#f2f2f2" Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:BooleanToVisibilityConverter}}" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="5"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="150"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <DockPanel Grid.Row="1"  Visibility="{Binding CallControl.CallControlSupported, Converter={converter:BooleanToVisibilityConverter}}">
+      <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" FontWeight="Bold"  FontSize="12" Text="Oops! This device does not support RCC feature"/>
+    </DockPanel>
+    <GroupBox Margin="5,5,10,5" Grid.Row="2" Header="Integration Service"  Visibility="{Binding CallControl.CallControlSupported, Converter={converter:InvertableBooleanToVisibilityConverter}}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Client GUID:" />
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="TextBoxClientId" Margin="5" Text="{Binding ClientGuid, Source={StaticResource IntegrationService}}" HorizontalAlignment="Stretch" Height="20"/>
+        <Button Grid.Column="2" Grid.Row="0" Margin="3" Background="White" x:Name="ButtonConnect" Content="Connect" IsEnabled="{Binding ConnectEnabled, Source={StaticResource IntegrationService}, Converter={converter:BoolToBoolConverter}}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="20" Command="{Binding ButtonConnectCommand}" />
+        <Label Grid.Column="0" Grid.Row="1" Content="Client name:" />
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="TextBoxClientName" Margin="5" Text ="{Binding ClientName, Source={StaticResource IntegrationService}}" HorizontalAlignment="Stretch" Height="20"/>
+        <Button Grid.Column="2" Grid.Row="1" Margin="3" Background="White" x:Name="ButtonDisconnect" Content="Disconnect" IsEnabled="{Binding ConnectEnabled, Source={StaticResource IntegrationService}, Converter={converter:BoolToOppositeBoolConverter}}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="20" Command="{Binding ButtonDisconnectCommand}" />
+        <Label Grid.Column="0" Grid.Row="2" Content="Is in focus:" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBlock Grid.Column="1" Grid.Row="2" x:Name="TextBlockIsInFocus" HorizontalAlignment="Left" Margin="5" TextWrapping="NoWrap" Text="{Binding IsClientInFocus, Source={StaticResource IntegrationService}}" VerticalAlignment="Top"/>
+        <Label Grid.Column="0" Grid.Row="3" Content="State:" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <CheckBox Grid.Column="1" Grid.Row="3" Margin="5" x:Name="CheckBoxReadyForTelephony" Content="Ready for telephony" IsChecked="{Binding ReadyForTelephonyChecked, Source={StaticResource IntegrationService}}" IsEnabled="{Binding ReadyForTelephonyEnabled, Source={StaticResource IntegrationService}, Converter={converter:BoolToBoolConverter}}" HorizontalAlignment="Left"  VerticalAlignment="Center" Command="{Binding ReadyForTelephonyChecked}"/>
+      </Grid>
+    </GroupBox>
+    <GroupBox Margin="5,5,10,5" Grid.Row="3" Header="Output"  Visibility="{Binding CallControl.CallControlSupported, Converter={converter:InvertableBooleanToVisibilityConverter}}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Background="White" Style="{DynamicResource OffHookStyle}"  IsEnabled="{Binding CallControl.OffHookStatusEnabled}" x:Name="BtnOffHook" Tag="OffHook" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding ButtonClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}">
+          <Button.Content>
+            <TextBlock Text="{Binding CallControl.OffHookStatus, StringFormat='Off Hook ({0})', Mode=TwoWay}"/>
+          </Button.Content>
+        </Button>
+        <Label Grid.Row="0" Grid.Column="1" Content="Toggle between Off Hook/On Hook" Style="{DynamicResource OffHookStyle}"/>
+        <Button Background="White" Style="{DynamicResource RingerStyle}"  IsEnabled="{Binding CallControl.RingerStatusEnabled}" x:Name="BtnRinger" Tag="Ringer" Grid.Row="1" Grid.Column="0"   HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding ButtonClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}">
+          <Button.Content>
+            <TextBlock Text="{Binding CallControl.RingerStatus, StringFormat='Ringer ({0})', Mode=TwoWay}"/>
+          </Button.Content>
+        </Button>
+        <Label Grid.Row="1" Grid.Column="1" Content="Turn Ringer On/Off" Style="{DynamicResource RingerStyle}"/>
+        <Button Background="White" Style="{DynamicResource MuteStyle}"  IsEnabled="{Binding CallControl.MuteStatusEnabled}" x:Name="BtnMute" Tag="Mute" Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding ButtonClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}">
+          <Button.Content>
+            <TextBlock Text="{Binding CallControl.MuteStatus, StringFormat='Mute ({0})',  Mode=TwoWay}"/>
+          </Button.Content>
+        </Button>
+        <Label Grid.Row="2" Grid.Column="1" Content="Mute/Unmute Microphone" Style="{DynamicResource MuteStyle}"/>
+        <Button Background="White" Style="{DynamicResource OnHoldStyle}"  IsEnabled="{Binding CallControl.OnHoldStatusEnabled}" x:Name="BtnOnHold" Tag="OnHold" Grid.Row="3" Grid.Column="0"   HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding ButtonClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}">
+          <Button.Content>
+            <TextBlock Text="{Binding CallControl.OnHoldStatus, StringFormat='On Hold ({0})',  Mode=TwoWay}"/>
+          </Button.Content>
+        </Button>
+        <Label Grid.Row="3" Grid.Column="1" Content="Place Call on Hold/Resume" Style="{DynamicResource OnHoldStyle}" />
+        <Button Background="White" Style="{DynamicResource AudioLinkStyle}"  IsEnabled="{Binding CallControl.AudioLinkStatusEnabled}" x:Name="BtnAudioLink" Tag="AudioLink" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding ButtonClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}">
+          <Button.Content>
+            <TextBlock Text="{Binding CallControl.AudioLinkStatus, StringFormat='Audio Link ({0})', Mode=TwoWay}"/>
+          </Button.Content>
+        </Button>
+        <Label Grid.Row="4" Grid.Column="1" Content="Open Audio Link between Base/Dongle and Device" Style="{DynamicResource AudioLinkStyle}" />
+        <Button Background="White" Style="{DynamicResource BusyLightStyle}"  IsEnabled="{Binding CallControl.BusyLightStatusEnabled}" x:Name="BtnBusyLight" Tag="BusyLight" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding ButtonClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}">
+          <Button.Content>
+            <TextBlock Text="{Binding CallControl.BusyLightStatus,StringFormat='Busy Light ({0})',Mode=TwoWay}"/>
+          </Button.Content>
+        </Button>
+        <Label Grid.Row="5" Grid.Column="1" Content="Turn BusyLight On/Off" Style="{DynamicResource BusyLightStyle}"></Label>
+        <Button Grid.Row="0" Grid.Column="2" Content="Lock" Background="White"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding GetLockCommand}" />
+        <Label Grid.Row="0" Grid.Column="3" Content="Try to get the exclusive lock" Style="{DynamicResource OffHookStyle}"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="Unlock" Background="White"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding ReleaseLockCommand}" />
+        <Label Grid.Row="1" Grid.Column="3" Content="Release the exclusive lock" Style="{DynamicResource OffHookStyle}"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="Is Locked" Background="White"  HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Command="{Binding IsLockedCommand}" />
+        <Label Grid.Row="2" Grid.Column="3" Content="Get the status of the exclusive lock" Style="{DynamicResource OffHookStyle}"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding CallControl.Lock}"/>
+      </Grid>
+    </GroupBox>
+    <GroupBox Margin="5,5,10,5" Grid.Row="4" Header="Input" Visibility="{Binding CallControl.CallControlSupported, Converter={converter:InvertableBooleanToVisibilityConverter}}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Raw Hid (Id: UsagePage, Usage, Value)"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="Translated" Margin="10,0,0,0" />
+        <ListBox x:Name="RawHidData" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" ItemsSource="{Binding  RawHidData}" />
+        <ListBox x:Name="TranslatedData" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" ItemsSource="{Binding  TranslatedData}"/>
+        <Button Background="White" x:Name="BtnClear" Grid.Row="2" Grid.Column="0" Content="Clear" HorizontalAlignment="Left" Margin="5,4,0,0" VerticalAlignment="Top" Height="20" Width="60" Command="{Binding ClickClearCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Tag}"/>
+      </Grid>
+    </GroupBox>
+    <GroupBox Margin="5,5,10,5" Grid.Row="5" Header="HID working state" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding CallControl.CallControlSupported, Converter={converter:InvertableBooleanToVisibilityConverter}}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Name="lblHIDWorkingState" Content="Current state:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="0" Name="lblCurrentState" Text="{Binding CallControl.CurrentHIDWorkingState}" Margin="80,0,220,0" VerticalAlignment="Center" />
+        <Label Grid.Column="1" Name="labelSelect" Content="Select" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding CallControl.IsGnHidStdHidSupported, Converter={converter:BooleanToVisibilityConverter}}" />
+        <ComboBox Grid.Column="1" Name="cmbHIDStateList" Style="{DynamicResource ControlComboBox}" Visibility="{Binding CallControl.IsGnHidStdHidSupported, Converter={converter:BooleanToVisibilityConverter}}" ItemsSource="{Binding CallControl.HidWorkingStates}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding CallControl.CurrentHIDWorkingStateValue}" Margin="55,0,250,0" VerticalAlignment="Center" />
+      </Grid>
+    </GroupBox>
+  </Grid>
+</UserControl>

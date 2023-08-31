@@ -1,0 +1,193 @@
+﻿<Window x:Class="Jabra_SDK_Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+        xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:view="clr-namespace:Jabra_SDK_Demo.View"
+        xmlns:helpers="clr-namespace:Jabra_SDK_Demo.Helpers"
+        mc:Ignorable="d" Icon="Icons/Jabra.ico"
+        Height="710" Width="950" MinHeight="710" MinWidth="950" MaxHeight="710" MaxWidth="950"
+        Title="Jabra SDK Demo"
+        DataContext="{Binding Main,Source={StaticResource Locator}}">
+
+  <intr:Interaction.Triggers>
+    <intr:EventTrigger EventName="Loaded">
+      <intr:InvokeCommandAction Command="{Binding WindowLoaded}"/>
+    </intr:EventTrigger>
+    <intr:EventTrigger EventName="Closing">
+      <intr:InvokeCommandAction Command="{Binding WindowClosing}" />
+    </intr:EventTrigger>
+  </intr:Interaction.Triggers>
+  <Grid Margin="0,0,-5,0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="30" />
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <StackPanel x:Name="MainHeader" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+      <ContentControl Content="{Binding HeaderViewModel}" />
+    </StackPanel>
+    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="Black"/>
+    <DockPanel Background="Black" Grid.Row="1" Grid.Column="1" Margin="640,5,5,5">
+      <Menu Width="200" Height="20" FontSize="13" Background="White" DockPanel.Dock="Top">
+        <Menu.ItemsPanel>
+          <ItemsPanelTemplate>
+            <VirtualizingStackPanel Orientation="Horizontal" />
+          </ItemsPanelTemplate>
+        </Menu.ItemsPanel>
+        <MenuItem Header="Logging...">
+          <MenuItem Header="Log to File" IsCheckable="True" Tag="File" Command="{Binding LoggingCommand}" IsChecked="True">
+            <MenuItem.CommandParameter>
+              <MultiBinding Converter="{StaticResource MultiConverter}">
+                <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}"/>
+              </MultiBinding>
+            </MenuItem.CommandParameter>
+          </MenuItem>
+          <MenuItem Header="Log to Cloud"  IsCheckable="True" Tag="Cloud" IsEnabled="False" Command="{Binding LoggingCommand}" IsChecked="False">
+            <MenuItem.CommandParameter>
+              <MultiBinding Converter="{StaticResource MultiConverter}">
+                <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}"/>
+              </MultiBinding>
+            </MenuItem.CommandParameter>
+          </MenuItem>
+          <MenuItem Header="All"  IsCheckable="True" Tag="All" Command="{Binding LoggingCommand}" IsChecked="False">
+            <MenuItem.CommandParameter>
+              <MultiBinding Converter="{StaticResource MultiConverter}">
+                <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}"/>
+              </MultiBinding>
+            </MenuItem.CommandParameter>
+          </MenuItem>
+        </MenuItem>
+        <MenuItem Header="Enable HID Events">
+          <MenuItem Header="Jabra" IsCheckable="True" Tag="Jabra" Command="{Binding EnableStdHIDEventsCommand}" IsChecked="False">
+            <MenuItem.CommandParameter>
+              <MultiBinding Converter="{StaticResource MultiConverter}">
+                <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}"/>
+              </MultiBinding>
+            </MenuItem.CommandParameter>
+          </MenuItem>
+          <MenuItem Header="Non Jabra" IsCheckable="True" Tag="NonJabra" Command="{Binding EnableStdHIDEventsCommand}" IsChecked="False">
+            <MenuItem.CommandParameter>
+              <MultiBinding Converter="{StaticResource MultiConverter}">
+                <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
+                <Binding Path="IsChecked" RelativeSource="{RelativeSource Self}"/>
+              </MultiBinding>
+            </MenuItem.CommandParameter>
+          </MenuItem>
+        </MenuItem>
+      </Menu>
+    </DockPanel>
+    <ScrollViewer Background="{DynamicResource JabraTransparent}" Grid.Row="2" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" IsEnabled="{Binding ShowSpinner, Source={StaticResource SpecialHandlers}, Converter={converter:BoolToOppositeBoolConverter}}" >
+      <StackPanel>
+        <ListBox Name="LstConnectedDevices" Width="115" ItemsSource="{Binding ConnectedDeviceList}" >
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <VirtualizingStackPanel IsItemsHost="True" Orientation="Vertical"/>
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+          <ListBox.ItemTemplate>
+            <DataTemplate >
+              <ContentControl Content="{Binding }" HorizontalAlignment="Left"/>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock Text="Loading..." Margin="10,10,10,0" Visibility="{Binding IsFirstScanDone, Converter={converter:InvertableBooleanToVisibilityConverter}}"></TextBlock>
+      </StackPanel>
+    </ScrollViewer>
+    <DockPanel Grid.Row="2" Grid.Column="1" Background="#f2f2f2" Margin="-5,0,0,0" IsEnabled="{Binding ShowSpinner, Source={StaticResource SpecialHandlers}, Converter={converter:BoolToOppositeBoolConverter}}">
+      <TabControl Focusable="False" SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=1}" Style="{DynamicResource MainTabControl}" x:Name="TabControl" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        <TabItem Style="{StaticResource MainTabTabItem}" Header="Device Information" Name="DeviceInfo" IsSelected="{Binding DisplayFisrtTab, Source={StaticResource SpecialHandlers}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+          <DockPanel Margin="10,10,10,0" Name="DpDeviceSettingsDetails">
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+            <ContentControl Content="{Binding DeviceInformationViewModel}" DockPanel.Dock="Top" />
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Device Settings" Name="DeviceSettings" >
+          <DockPanel Margin="10,10,10,0" Name="DpDeviceSettings">
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+            <ContentControl Content="{Binding DeviceSettingsViewModel}"  DockPanel.Dock="Top"/>
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Call Control" Name="CallControl" >
+          <DockPanel Name="DpRccCallControl"  Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+            <ContentControl Content="{Binding CallControlViewModel}" DockPanel.Dock="Top"  />
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="BT Pairing" Name="BtPairing" >
+          <DockPanel Name="DpBtPairing"  Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+            <ContentControl Content="{Binding BtPairingViewModel}" DockPanel.Dock="Top"  />
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Remote MMI" Name="ButtonTakeOver">
+          <DockPanel Name="DpButtonTakeOver"  Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+              <StackPanel DockPanel.Dock="Top" Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" Text="This device does not support Remote MMI feature" Visibility="{Binding IsRMMISupported,Source={StaticResource SpecialHandlers},Mode=TwoWay, Converter={converter:InvertableBooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+              </StackPanel>
+              <ContentControl Grid.Row="1" Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+              <ContentControl Grid.Row="1" Content="{Binding ButtonTakeOverViewModel}"  DockPanel.Dock="Top"/>
+              <ContentControl Grid.Row="1" Content="{Binding RemoteMMIv2ViewModel}"  DockPanel.Dock="Top"/>
+            </Grid>
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Firmware Update" Name="FirmwareUpdate">
+          <DockPanel Name="DpRecoverDevices"  Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+            <ContentControl Content="{Binding FirmwareUpdatesViewModel}"  DockPanel.Dock="Top"/>
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Authorization"  Name="Authorization" IsSelected="{Binding DisplayAuthorizationTab, Source={StaticResource SpecialHandlers}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+          <DockPanel Name="DpAuthorization"  Dock="Top"  VerticalAlignment="Top" HorizontalAlignment="Center"   Margin="-2,0,-5,-5" >
+            <ContentControl Content="{Binding AuthorizationViewModel}"  DockPanel.Dock="Top"/>
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Logging" Name="DeviceLogging">
+          <DockPanel Name="DpDeviceLogging"  Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+            <ContentControl Content="{Binding DeviceLoggingViewModel}"  DockPanel.Dock="Top"/>
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Whiteboard" Name="Whiteboard">
+          <DockPanel x:Name="DpWhiteboard"  DockPanel.Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected, Converter={converter:InvertableBooleanToVisibilityConverter}, Source={StaticResource SpecialHandlers}}" />
+            <ContentControl Content="{Binding WhiteboardViewModel}"  DockPanel.Dock="Top"/>
+          </DockPanel>
+        </TabItem>
+        <TabItem Style="{DynamicResource MainTabTabItem}" Header="Video" Name="VideoConfiguration">
+          <DockPanel x:Name="DpVideo"  DockPanel.Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+            <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected, Converter={converter:InvertableBooleanToVisibilityConverter}, Source={StaticResource SpecialHandlers}}" />
+            <ContentControl Content="{Binding VideoConfigurationViewModel}"  DockPanel.Dock="Top"/>
+          </DockPanel>
+        </TabItem>
+                <TabItem Style="{DynamicResource MainTabTabItem}" Header="Test" Name="Test">
+                    <DockPanel x:Name="DpTest"  DockPanel.Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
+                        <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+                        <ContentControl Content="{Binding DeviceSettingsViewModel}"  DockPanel.Dock="Top"/>
+                        <Button Name="btnANC" Content="ANC" Click="BtnANC_Click"/>
+                        <Button Name="btnSurround" Content="Surround" Click="BtnSurround_Click"/>
+                        <Button Name="btnSurroundMusic" Content="Surround+Music" Click="BtnSurroundMusic_Click"/>
+                        <Button Name="btnOff" Content="Off" Click="BtnOff_Click"/>
+
+                    </DockPanel>
+                </TabItem>
+      </TabControl>
+    </DockPanel>
+    </Grid>
+</Window>
+

@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['baseurl_5fcapabilities_0',['baseUrl_capabilities',['../struct_config_params__cloud.html#a51cafb6ad75629000dbde958ccc705c4',1,'ConfigParams_cloud']]],
+  ['baseurl_5ffw_1',['baseUrl_fw',['../struct_config_params__cloud.html#a6a419894e0fcd89711f67bb376ae5ebd',1,'ConfigParams_cloud']]],
+  ['batterycomponent_2',['BatteryComponent',['../_common_8h.html#adfa7f3df51c7476152af2ff8814baa4d',1,'Common.h']]],
+  ['batterystatusupdatecallback_3',['BatteryStatusUpdateCallback',['../_common_8h.html#a2288acdd23cee3ab451fdea8780d9a6f',1,'Common.h']]],
+  ['batterystatusupdatecallbackv2_4',['BatteryStatusUpdateCallbackV2',['../_common_8h.html#af5d442b8d5f8be2147b62bcf549bfb00',1,'Common.h']]],
+  ['bitspersample_5',['bitsPerSample',['../struct_jabra___audio_file_params.html#af2facb32402d4c0f1268e29dce38061a',1,'Jabra_AudioFileParams']]],
+  ['blockallnetworkaccess_6',['blockAllNetworkAccess',['../struct_config_params__cloud.html#a39bd8484927d0394682eafca35f220c9',1,'ConfigParams_cloud']]],
+  ['blue_7',['blue',['../struct_remote_mmi_action_output.html#a788afce8480af597094757fa042c008d',1,'RemoteMmiActionOutput::blue()'],['../struct_remote_mmi_output.html#a4ccf3381ad21f6b2d3f58c45c6432251',1,'RemoteMmiOutput::blue()']]],
+  ['busylight_5foff_8',['BUSYLIGHT_OFF',['../_common_8h.html#a3b634bb253b906d691fa9c6574985016af8f9789efd7655ea17017221cf7569ec',1,'Common.h']]],
+  ['busylight_5ftoggle_9',['BUSYLIGHT_TOGGLE',['../_common_8h.html#a3b634bb253b906d691fa9c6574985016af2d8c275bdeaea691c2a60b1ab7aa85c',1,'Common.h']]],
+  ['busylightchangelistener_10',['BusylightChangeListener',['../_common_8h.html#aa789893d87d0e237203a0fe85d65022e',1,'Common.h']]],
+  ['busylightvalue_11',['BusyLightValue',['../_common_8h.html#a3b634bb253b906d691fa9c6574985016',1,'Common.h']]],
+  ['buttonevent_12',['ButtonEvent',['../struct_button_event.html',1,'']]],
+  ['buttoneventcount_13',['buttonEventCount',['../struct_button_event.html#a6cc2c08ac1bd238eca565aa17e295595',1,'ButtonEvent']]],
+  ['buttoneventinfo_14',['ButtonEventInfo',['../struct_button_event_info.html',1,'']]],
+  ['buttoneventinfo_15',['buttonEventInfo',['../struct_button_event.html#ae2f84b6d93c8455c6d76615fe303dfe5',1,'ButtonEvent']]],
+  ['buttoneventtype_16',['ButtonEventType',['../struct_button_event_type.html',1,'']]],
+  ['buttoneventtype_17',['buttonEventType',['../struct_button_event_info.html#a75f0c8a276c755db779dc53ab7965180',1,'ButtonEventInfo']]],
+  ['buttoneventtypesize_18',['buttonEventTypeSize',['../struct_button_event_info.html#acb9455ce32ac8a06ac0df207513018b2',1,'ButtonEventInfo']]],
+  ['buttontypekey_19',['buttonTypeKey',['../struct_button_event_info.html#ae6557a281a8c6e98073c2ebfe007a4f1',1,'ButtonEventInfo']]],
+  ['buttontypevalue_20',['buttonTypeValue',['../struct_button_event_info.html#ac7497324b96b4bce5c9263a44bcd0485',1,'ButtonEventInfo']]]
+];

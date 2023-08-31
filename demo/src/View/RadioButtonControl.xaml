@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.RadioButtonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="800">
+  <Grid  ToolTipService.ShowDuration="120000">
+    <Grid.ToolTip>
+      <StackPanel>
+        <TextBlock FontWeight="Bold" Text="{Binding RadioButtonControl.Label}" TextWrapping="Wrap" />
+        <TextBlock Text="{Binding RadioButtonControl.HelpText}" TextWrapping="Wrap" Width="600" />
+      </StackPanel>
+    </Grid.ToolTip>
+    <StackPanel Orientation="Horizontal" Margin="15,5,0,0" Height="30" IsEnabled="{Binding RadioButtonControl.ControlEnabled}">
+      <TextBlock Style="{DynamicResource ControlTextBlock}" TextAlignment="Left" Text="{Binding RadioButtonControl.Label}"  Width="250" Margin="3"  VerticalAlignment="Center" TextTrimming="CharacterEllipsis"  />
+      <RadioButton Style="{DynamicResource ControlRadioButton}" Content="{Binding RadioButtonControl.RadioOn}" Margin="10,5" FontWeight="Bold" 
+                   GroupName="{Binding RadioButtonControl.GroupName}" IsChecked="{Binding RadioButtonControl.RadioOnIsCheck}" />
+      <RadioButton Style="{DynamicResource ControlRadioButton}" Content="{Binding RadioButtonControl.RadioOff}" Margin="40,5" FontWeight="Bold" 
+                   GroupName="{Binding RadioButtonControl.GroupName}" IsChecked="{Binding RadioButtonControl.RadioOffIsCheck}" />
+      <Image Width="15" Height="20" Margin="300,5" Source="..\Images\Padlock.png" Visibility="{Binding RadioButtonControl.Protected, Converter={converter:BooleanToVisibilityConverter}}" />
+    </StackPanel>
+  </Grid>
+</UserControl>

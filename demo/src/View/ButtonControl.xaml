@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.ButtonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="800">
+  <Grid ToolTipService.ShowDuration="120000">
+    <Grid.ToolTip>
+      <StackPanel>
+        <TextBlock FontWeight="Bold" Text="{Binding ButtonControl.Label}" TextWrapping="Wrap" />
+        <TextBlock Text="{Binding ButtonControl.HelpText}" TextWrapping="Wrap" Width="400" />
+      </StackPanel>
+    </Grid.ToolTip>
+    <Grid  Margin="15,5,0,0" Height="30" IsEnabled="{Binding ButtonControl.ControlEnabled}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="253" />
+        <ColumnDefinition Width="455" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <TextBlock Grid.Column="0" Style="{DynamicResource ControlTextBlock}" TextAlignment="Left"  Text="{Binding ButtonControl.Label}"  Width="253" Margin="3"  VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+      <Button Grid.Column="1" Style="{DynamicResource ControlButton}" x:Name="Button" Content="{Binding ButtonControl.CurrentValue}" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Width="75" Height="20" Command="{Binding ClickCommand}"/>
+      <Image Grid.Column="2" Width="15" Height="20" Margin="20,5" Source="..\Images\Padlock.png" Visibility="{Binding ButtonControl.Protected, Converter={converter:BooleanToVisibilityConverter}}" />
+    </Grid>
+  </Grid>
+</UserControl>

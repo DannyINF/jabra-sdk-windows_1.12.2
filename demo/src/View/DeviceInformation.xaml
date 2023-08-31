@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Jabra_SDK_Demo.View.DeviceInformation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:Jabra_SDK_Demo.Converter"
+             mc:Ignorable="d" >
+  <Grid  DockPanel.Dock="Top" Background="#f2f2f2" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="300"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="5"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+    <DockPanel Grid.Row="1" HorizontalAlignment="Center" Visibility="{Binding DeviceInformation.DeviceName,Converter={converter:StringNullOrEmptyToVisibilityConverter}}"/>
+    <DockPanel Grid.Row="2" HorizontalAlignment="Center" Visibility="{Binding DeviceInformation.DeviceName,Converter={converter:StringNullOrEmptyToVisibilityConverter}}">
+      <Grid >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120"/>
+          <ColumnDefinition Width="190"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Content="Device Name   :"  HorizontalContentAlignment="Right" Name="LabelDeviceName" />
+        <Label Grid.Column="1" HorizontalContentAlignment="Left"  Name="LblDeviceName" Content="{Binding DeviceInformation.DeviceName,FallbackValue=No Devices Connected}"/>
+      </Grid>
+    </DockPanel>
+    <Image Grid.Row="3" x:Name="ImageName" Source="{Binding DeviceInformation.ImageSource, Mode=TwoWay}"/>
+    <DockPanel Grid.Row="4" HorizontalAlignment="Center" Visibility="{Binding DeviceInformation.SerialNumber,Converter={converter:StringNullOrEmptyToVisibilityConverter}, FallbackValue=Collapsed}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120"/>
+          <ColumnDefinition Width="190"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Content="Serial Number  :"  HorizontalContentAlignment="Right" Name="LabelSerialNumber"/>
+        <Label Grid.Column="1"  HorizontalContentAlignment="Left"  Name="LblSerialNumber" Content="{Binding DeviceInformation.SerialNumber}"/>
+      </Grid>
+    </DockPanel>
+    <DockPanel Grid.Row="6" HorizontalAlignment="Center" Visibility="{Binding DeviceInformation.BatteryStatus,Converter={converter:StringNullOrEmptyToVisibilityConverter}, FallbackValue=Collapsed}" >
+      <Grid >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="30"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120"/>
+          <ColumnDefinition Width="120"/>
+          <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Content="Battery (%)  :"  HorizontalContentAlignment="Right" Name="LabelBatteryStatus"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Name="LblBatteryStatus" Text="{Binding DeviceInformation.BatteryStatus}" TextWrapping="WrapWithOverflow"/>
+        <Button Grid.Column="2" x:Name="ButtonRefresh" Width="70" Height="30" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding ClickCommand}">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="20" />
+              <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            <Image Source="../Images/refresh.png"/>
+            <TextBlock Grid.Column="1" Margin="5" Text="Refresh" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+          </Grid>
+        </Button>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Extra units :" Visibility="{Binding DeviceInformation.HasExtraBatteryUnits, Converter={converter:BooleanToVisibilityConverter}}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding DeviceInformation.BatteryStatusUnits}" TextWrapping="WrapWithOverflow"/>
+      </Grid>
+    </DockPanel>
+  </Grid>
+</UserControl>

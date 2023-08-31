@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['radiobutton_0',['RadioButton',['../namespace_jabra_s_d_k.html#a20b99b4272605b3ebebf5dc78c436639accf0503df958552a245a3593e1063cd8',1,'JabraSDK']]],
+  ['readyfortelephony_1',['ReadyForTelephony',['../namespace_jabra_s_d_k.html#a2d7ac86dc810f7d7cf5f03500378d86fa01eed80d7888ca8133c1f8760237447d',1,'JabraSDK']]],
+  ['redial_2',['Redial',['../namespace_jabra_s_d_k.html#a03606eb4e93727a021c31d2fe2117534a14a2f75ebc00201a0dfab620a1205f7a',1,'JabraSDK']]],
+  ['rejectcall_3',['RejectCall',['../namespace_jabra_s_d_k.html#a03606eb4e93727a021c31d2fe2117534a98351d38a9480464f94029c83391254f',1,'JabraSDK']]],
+  ['remote_5fcontrol_4',['REMOTE_CONTROL',['../namespace_jabra_s_d_k.html#ae3fd6465ddb4c0f897f4ce38134ab84eabf93a2711fd75b37341df61a2325eb87',1,'JabraSDK']]],
+  ['remotecontrol_5',['RemoteControl',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4abb13d05c50fe0389c24ad07efc35740d',1,'JabraSDK']]],
+  ['remotemmi_6',['RemoteMMI',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4a664bea5c1166e667adc97d4f7ef4e4c5',1,'JabraSDK']]],
+  ['remotemmiv2_7',['RemoteMMIv2',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4a2def4acef47da9fa6a22d82c32a1b975',1,'JabraSDK']]],
+  ['return_5ftimeout_8',['Return_Timeout',['../namespace_jabra_s_d_k.html#a780638a9286e0778034517eb84113f70a53e24884c0c37e29287d85bc513bca6c',1,'JabraSDK']]],
+  ['returnasync_9',['ReturnAsync',['../namespace_jabra_s_d_k.html#a780638a9286e0778034517eb84113f70a24f9f80991a4f2a9dcd537b7bef4fdf3',1,'JabraSDK']]],
+  ['returnok_10',['ReturnOk',['../namespace_jabra_s_d_k.html#a780638a9286e0778034517eb84113f70ae0b915530d2e25720f82643e6e3b6703',1,'JabraSDK']]],
+  ['returnparameterfail_11',['ReturnParameterFail',['../namespace_jabra_s_d_k.html#a780638a9286e0778034517eb84113f70aab6da624ba8a24d1d89633f213ecc226',1,'JabraSDK']]],
+  ['right_12',['RIGHT',['../namespace_jabra_s_d_k.html#ae3fd6465ddb4c0f897f4ce38134ab84ea21507b40c80068eda19865706fdc2403',1,'JabraSDK']]],
+  ['ringer_13',['Ringer',['../namespace_jabra_s_d_k.html#a03606eb4e93727a021c31d2fe2117534abf36c786791df40a79c4a64877d7509c',1,'JabraSDK']]],
+  ['ringtoneupload_14',['RingtoneUpload',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4a2430bd876a832538369b36fdfdbc7b39',1,'JabraSDK']]],
+  ['rrinterval_15',['RRInterval',['../namespace_jabra_s_d_k.html#a0d443abeb47f8c70710d2153e6015ea4a28383e8d6785db7e4ae37f0c5bfab288',1,'JabraSDK']]]
+];
