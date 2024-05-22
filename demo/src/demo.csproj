@@ -59,6 +59,9 @@
     <StartupObject>Jabra_SDK_Demo.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JabraANC">
+      <HintPath>..\..\..\..\Documents\JabraANC.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />

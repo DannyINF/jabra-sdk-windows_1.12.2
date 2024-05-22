@@ -177,12 +177,12 @@
         </TabItem>
                 <TabItem Style="{DynamicResource MainTabTabItem}" Header="Test" Name="Test">
                     <DockPanel x:Name="DpTest"  DockPanel.Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   Margin="-2,0,-5,-5" >
-                        <ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
-                        <ContentControl Content="{Binding DeviceSettingsViewModel}"  DockPanel.Dock="Top"/>
-                        <Button Name="btnANC" Content="ANC" Click="BtnANC_Click"/>
-                        <Button Name="btnSurround" Content="Surround" Click="BtnSurround_Click"/>
-                        <Button Name="btnSurroundMusic" Content="Surround+Music" Click="BtnSurroundMusic_Click"/>
-                        <Button Name="btnOff" Content="Off" Click="BtnOff_Click"/>
+                        <!--<ContentControl Content="{Binding DefaultDeviceInformationViewModel}" DockPanel.Dock="Top"  Visibility="{Binding DeviceConnected,Source={StaticResource SpecialHandlers}, Converter={converter:InvertableBooleanToVisibilityConverter}}" />
+                        <ContentControl Content="{Binding DeviceSettingsViewModel}"  DockPanel.Dock="Top"/>-->
+                        <Button Name="btnANC" Content="OFF" Click="BtnANC_Click"/>
+                        <Button Name="btnSurround" Content="ANC" Click="BtnSurround_Click"/>
+                        <Button Name="btnSurroundMusic" Content="Surround" Click="BtnSurroundMusic_Click"/>
+                        <Button Name="btnOff" Content="Music" Click="BtnOff_Click"/>
 
                     </DockPanel>
                 </TabItem>
